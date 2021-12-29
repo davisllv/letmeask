@@ -1,8 +1,14 @@
+import { Button } from "./components/Button";
 
 function App() {
   return (
-    <h1>Hello worldd</h1>
+    <>
+    
+    <Button> Botão 1</Button>
+    
+    </>
   );
 }
 
 export default App;
+ 
