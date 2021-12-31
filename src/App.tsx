@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 
-import { AuthContextProvider } from "./context/Authcontext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
