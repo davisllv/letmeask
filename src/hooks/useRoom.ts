@@ -13,7 +13,7 @@ type QuestionType = {
     isAnswered: boolean;
     isHighligthed: boolean;
     likeCount: number;
-    hasLiked: boolean;
+    likeId: string | undefined;
 };
 
 type FirebaseQuestions = Record<
