@@ -42,21 +42,8 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
 
 Letmeask é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
 
-Este é um projeto desenvolvido durante a **[Next Level Week Together](https://nextlevelweek.com/)**, apresentada dos dias 20 a 27 de Junho de 2021.
-
-
-## 🔖 Layout
-
-Você pode visualizar o layout do projeto através do link abaixo:
-
-- [Layout Web](https://www.figma.com/community/file/1009824839797878169/Letmeask) 
-
-Lembrando que você precisa ter uma conta no [Figma](http://figma.com/).
-
-## 📝 License
-
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Este é um projeto desenvolvido durante a **[Next Level Week Together](https://nextlevelweek.com/)**.
 
 ---
 
-Feito com 💜 by Rocketseat 👋🏻 [Participe da nossa comunidade](https://discord.gg/gKUVrzrPrU)
+Feito com 💜 with the help of Rocketseat 👋🏻 
