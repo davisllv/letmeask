@@ -1,6 +1,6 @@
 import copyImg from "../assets/copy.svg";
 
-import "../styles/room-code.scss";
+import { RoomCodeStyled } from "../styles/room-code";
 
 type RoomCodeProps = {
   code: string;
@@ -12,11 +12,13 @@ export function RoomCode(props: RoomCodeProps) {
   }
 
   return (
-    <button className="room-code" onClick={copyRoomCodeToClipboard}>
-      <div>
-        <img src={copyImg} alt="Copy room code" />
-      </div>
-      <span>Sala #{props.code}</span>
-    </button>
+    <RoomCodeStyled>
+      <button className="room-code" onClick={copyRoomCodeToClipboard}>
+        <div>
+          <img src={copyImg} alt="Copy room code" />
+        </div>
+        <span>Sala #{props.code}</span>
+      </button>
+    </RoomCodeStyled>
   );
 }

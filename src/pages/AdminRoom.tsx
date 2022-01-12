@@ -1,4 +1,5 @@
 import { useHistory, useParams } from "react-router-dom";
+import { DefaultTheme, ThemeProvider } from "styled-components";
 
 import deleteImg from "../assets/delete.svg";
 import checkImg from "../assets/check.svg";
@@ -8,10 +9,14 @@ import { Button } from "../components/Button";
 import { Question } from "../components/Question";
 import { useRoom } from "../hooks/useRoom";
 
-import "../styles/room.scss";
+import { RoomStyled } from "../styles/room";
+import GlobalStyle from "../styles/global";
 
 import { database } from "../services/firebase";
-import { Header } from "../components/Header";
+import { Header } from "../components/Header/Header";
+import ligth from "../styles/themes/ligth";
+import dark from "../styles/themes/dark";
+import usePersistedState from "../hooks/usePersistedState";
 
 type RoomParams = {
   id: string;
@@ -25,6 +30,8 @@ export function AdminRoom() {
 
   const { title, questions } = useRoom(roomId);
 
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", ligth);
+
   async function handleEndRoom() {
     database.ref(`rooms/${roomId}`).update({
       endedAt: new Date(),
@@ -32,6 +39,10 @@ export function AdminRoom() {
 
     history.push("/");
   }
+
+  const toggleTheme = () => {
+    setTheme(theme.title === "ligth" ? dark : ligth);
+  };
 
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm("Tem certeza que você deseja excluir esta pergunta?")) {
@@ -52,64 +63,69 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
-      <Header code={roomId}>
-        <Button isOutlined onClick={handleEndRoom}>
-          Encerrar Sala
-        </Button>
-      </Header>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RoomStyled>
+        <div id="page-room">
+          <Header code={roomId} toggleTheme={toggleTheme}>
+            <Button isOutlined onClick={handleEndRoom}>
+              Encerrar Sala
+            </Button>
+          </Header>
 
-      <main className="content">
-        <div className="room-title">
-          <h1>Sala {title}</h1>
-          <span>
-            {questions.length > 0 ? (
-              <span>{questions.length} pergunta(s)</span>
-            ) : (
-              <span>0 perguntas</span>
-            )}
-          </span>
-        </div>
+          <main className="content">
+            <div className="room-title">
+              <h1>Sala {title}</h1>
+              <div>
+                <span>
+                  {questions.length > 0 && (
+                    <span>{questions.length} pergunta(s)</span>
+                  )}
+                </span>
+              </div>
+            </div>
 
-        <div className="question-list">
-          {questions.map((questions) => {
-            return (
-              <Question
-                key={questions.id}
-                content={questions.content}
-                author={questions.author}
-                isAnswered={questions.isAnswered}
-                isHighligthed={questions.isHighligthed}
-              >
-                {!questions.isAnswered && (
-                  <>
+            <div className="question-list">
+              {questions.map((questions) => {
+                return (
+                  <Question
+                    key={questions.id}
+                    content={questions.content}
+                    author={questions.author}
+                    isAnswered={questions.isAnswered}
+                    isHighligthed={questions.isHighligthed}
+                  >
+                    {!questions.isAnswered && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            handleCheckQuestionAsAnswered(questions.id)
+                          }
+                        >
+                          <img src={checkImg} alt="Check question" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleHighlightQuestions(questions.id)}
+                        >
+                          <img src={answerImg} alt="Destact question" />
+                        </button>
+                      </>
+                    )}
                     <button
                       type="button"
-                      onClick={() =>
-                        handleCheckQuestionAsAnswered(questions.id)
-                      }
+                      onClick={() => handleDeleteQuestion(questions.id)}
                     >
-                      <img src={checkImg} alt="Check question" />
+                      <img src={deleteImg} alt="Delete question" />
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighlightQuestions(questions.id)}
-                    >
-                      <img src={answerImg} alt="Destact question" />
-                    </button>
-                  </>
-                )}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(questions.id)}
-                >
-                  <img src={deleteImg} alt="Delete question" />
-                </button>
-              </Question>
-            );
-          })}
+                  </Question>
+                );
+              })}
+            </div>
+          </main>
         </div>
-      </main>
-    </div>
+      </RoomStyled>
+    </ThemeProvider>
   );
 }

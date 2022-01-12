@@ -1,33 +1,11 @@
+import styled from "styled-components"
+
+export const RoomStyled = styled.div`
 #page-room {
-  header {
-    padding: 24px;
-    border-bottom: 1px solid #e2e2e2;
-
-    .content {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      > img {
-        max-height: 45px;
-      }
-
-      > div {
-        display: flex;
-        gap: 16px;
-
-        button {
-          height: 40px;
-        }
-      }
-    }
-  }
-
   main {
     max-width: 800px;
     margin: 0 auto;
+    
 
     .room-title {
       margin: 32px 0 24px;
@@ -37,12 +15,16 @@
       h1 {
         font-family: "Poppins", sans-serif;
         font-size: 24px;
-        color: #29292e;
+        color: ${props => props.theme.colors.text};
+      }
+
+      div{
+        margin-left: 16px;
       }
 
       span {
-        margin-left: 16px;
-        background: #e559f9;
+        
+        background: ${props => props.theme.colors.secondary};
         border-radius: 9999px;
         padding: 8px 8px;
         color: #fff;
@@ -59,7 +41,7 @@
         border-radius: 8px;
         background: #fefefe;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-        resize: vertical;
+        resize: none;
         min-height: 130px;
       }
 
@@ -81,7 +63,7 @@
 
           span {
             margin-left: 8px;
-            color: #29292e;
+            color: ${props => props.theme.colors.text};
             font-weight: 500;
             font-size: 14px;
           }
@@ -110,3 +92,5 @@
     }
   }
 }
+`;
+

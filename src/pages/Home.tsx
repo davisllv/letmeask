@@ -8,7 +8,7 @@ import googleIconImg from "../assets/google-icon.svg";
 //#endregion photos
 //#region Styles
 import "../styles/auth.scss";
-import "../styles/global.scss";
+import GlobalStyle from "../styles/global";
 //#endregion Styles
 
 import { Button } from "../components/Button";
@@ -52,6 +52,7 @@ export function Home() {
 
   return (
     <div id="page-auth">
+      <GlobalStyle />
       <aside>
         <img
           src={illustrationImg}

@@ -1,8 +1,11 @@
+import styled from "styled-components";
+
+export const ButtonStyled = styled.div`
 .button {
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #835afd;
+  background: ${props => props.theme.colors.secondary};
   color: #fff;
   padding: 0 32px;
 
@@ -34,3 +37,4 @@
     cursor: not-allowed;
   }
 }
+`
