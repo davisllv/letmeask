@@ -77,7 +77,7 @@ export const RoomStyled = styled.div`
           button {
             background: transparent;
             border: 0;
-            color: #835afd;
+            color: ${props => props.theme.colors.secondary};
             text-decoration: underline;
             font-size: 14px;
             font-weight: 500;

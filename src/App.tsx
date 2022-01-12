@@ -12,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
+
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />

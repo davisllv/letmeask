@@ -10,4 +10,4 @@ const ligth = {
     },
 }
 
-export default ligth
+export default ligth;

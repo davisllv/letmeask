@@ -77,11 +77,9 @@ export function AdminRoom() {
             <div className="room-title">
               <h1>Sala {title}</h1>
               <div>
-                <span>
-                  {questions.length > 0 && (
-                    <span>{questions.length} pergunta(s)</span>
-                  )}
-                </span>
+                {questions.length > 0 && (
+                  <span>{questions.length} pergunta(s)</span>
+                )}
               </div>
             </div>
 
@@ -102,12 +100,14 @@ export function AdminRoom() {
                           onClick={() =>
                             handleCheckQuestionAsAnswered(questions.id)
                           }
+                          title="Check question"
                         >
                           <img src={checkImg} alt="Check question" />
                         </button>
                         <button
                           type="button"
                           onClick={() => handleHighlightQuestions(questions.id)}
+                          title="Destact question"
                         >
                           <img src={answerImg} alt="Destact question" />
                         </button>
@@ -116,6 +116,7 @@ export function AdminRoom() {
                     <button
                       type="button"
                       onClick={() => handleDeleteQuestion(questions.id)}
+                      title="Delete question"
                     >
                       <img src={deleteImg} alt="Delete question" />
                     </button>

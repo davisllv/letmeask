@@ -22,7 +22,8 @@ export function Header({ code, children, toggleTheme }: IHeaderProps) {
     <HeaderStyled>
       <header>
         <div className="content">
-          <img src={logoImg} alt="" />
+          <img src={logoImg} alt="This is te icon from the page" />
+
           <div>
             <RoomCode code={code} />
             {children}
@@ -31,16 +32,16 @@ export function Header({ code, children, toggleTheme }: IHeaderProps) {
               checked={title === "dark"}
               checkedIcon={false}
               handleDiameter={30}
-              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.4)"
               activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
               uncheckedIcon={false}
-              onColor="#86d3ff"
-              onHandleColor="#2693e6"
+              onColor="#835afd"
+              offColor="#744253"
               height={20}
               width={48}
               uncheckedHandleIcon={
                 <img
-                  src={moonImg}
+                  src={sunImg}
                   style={{
                     height: "100%",
                     width: "100%",
@@ -49,7 +50,7 @@ export function Header({ code, children, toggleTheme }: IHeaderProps) {
               }
               checkedHandleIcon={
                 <img
-                  src={sunImg}
+                  src={moonImg}
                   style={{
                     height: "100%",
                     width: "100%",

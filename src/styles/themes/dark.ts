@@ -10,4 +10,4 @@ const dark = {
     },
 }
 
-export default dark
+export default dark;

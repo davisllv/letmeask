@@ -1,3 +1,6 @@
+import styled from "styled-components";
+
+export const QuestionStyled = styled.div`
 .question {
   background: #fefefe;
   border-radius: 8px;
@@ -62,10 +65,10 @@
         gap: 8px;
 
         &.liked {
-          color: #835afd;
+          color: ${props => props.theme.colors.secondary};
 
           svg path {
-            stroke: #835afd;
+            stroke: ${props => props.theme.colors.secondary};
           }
         }
       }
@@ -76,3 +79,6 @@
     }
   }
 }
+
+
+`
